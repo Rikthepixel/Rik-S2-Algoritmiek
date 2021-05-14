@@ -52,11 +52,11 @@ namespace SimpleAlgo.Business
 
         private bool ComparePriceAsc(Product A, Product B)
         {
-            return A.Price > B.Price;
+            return A.Price < B.Price;
         }
         private bool ComparePriceDec(Product A, Product B)
         {
-            return A.Price < B.Price;
+            return A.Price > B.Price;
         }
         public List<Product> SortProductsByPrice(bool Asc = true)
         {
