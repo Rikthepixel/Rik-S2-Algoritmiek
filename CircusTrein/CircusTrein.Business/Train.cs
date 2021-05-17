@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -49,7 +49,7 @@ namespace CircusTrein.Business
                 for (int i = 0; i < Carts.Count; i++)
                 {
 
-                    var Result = Carts[i].AddAnimal(newAnimal);
+                    var Result = Carts[i].CheckAndAddAnimal(newAnimal);
                     if (Result)
                     {
                         //Animal has found a cart, break out of the loop
@@ -62,7 +62,7 @@ namespace CircusTrein.Business
                 {
                     //There are no fitting cart, create a new one
                     var newCart = new Cart(pointsPerCartLimit);
-                    newCart.AddAnimal(newAnimal);
+                    newCart.CheckAndAddAnimal(newAnimal);
                     Carts.Add(newCart);
                 }
             }
@@ -70,7 +70,7 @@ namespace CircusTrein.Business
             {
                 //There are no carts, create a new one
                 var newCart = new Cart(pointsPerCartLimit);
-                newCart.AddAnimal(newAnimal);
+                newCart.CheckAndAddAnimal(newAnimal);
                 Carts.Add(newCart);
             }
 

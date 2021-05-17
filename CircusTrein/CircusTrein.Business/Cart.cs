@@ -93,7 +93,7 @@ namespace CircusTrein.Business
             return Result;
         }
 
-        public bool AddAnimal(Animal NewAnimal)
+        public bool CheckAndAddAnimal(Animal NewAnimal)
         {
             var CanFit = AnimalFits(NewAnimal);
             if (CanFit)
