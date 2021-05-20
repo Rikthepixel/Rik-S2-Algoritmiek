@@ -17,6 +17,7 @@ namespace CircusTrein.Business
         Medium,
         Big
     }
+
     public class Animal
     {
         public string Name { get; set; }
