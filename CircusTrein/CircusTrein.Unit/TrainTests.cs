@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using CircusTrein.Business;
 using System.Collections.Generic;
+using CircusTrein.Business.Factory;
 
 namespace CircusTrein.Unit
 {
@@ -16,8 +17,8 @@ namespace CircusTrein.Unit
         public void LargeCarnivore_SmallHerbivore_Sort()
         {
             var Animals = new List<Animal>();
-            Animals.Add(new Animal("Tiger", AnimalDiet.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
+            Animals.Add(AnimalFactory.CreateBigCarnivore());
+            Animals.Add(AnimalFactory.CreateSmallHerbivore());
 
             var CircusTrain = new Train();
             CircusTrain.LoadAnimals(Animals);
@@ -30,8 +31,8 @@ namespace CircusTrein.Unit
         public void LargeCarnivore_LargeHerbivore_Sort()
         {
             var Animals = new List<Animal>();
-            Animals.Add(new Animal("Tiger", AnimalDiet.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
+            Animals.Add(AnimalFactory.CreateBigCarnivore());
+            Animals.Add(AnimalFactory.CreateBigHerbivore());
 
             var CircusTrain = new Train();
             CircusTrain.LoadAnimals(Animals);
@@ -44,8 +45,8 @@ namespace CircusTrein.Unit
         public void MediumCarnivore_LargeHerbivore_Sort()
         {
             var Animals = new List<Animal>();
-            Animals.Add(new Animal("Hyena", AnimalDiet.Carnivore, AnimalSize.Medium));
-            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
+            Animals.Add(AnimalFactory.CreateMediumCarnivore());
+            Animals.Add(AnimalFactory.CreateBigHerbivore());
 
             var CircusTrain = new Train();
             CircusTrain.LoadAnimals(Animals);
@@ -58,8 +59,8 @@ namespace CircusTrein.Unit
         public void SmallCarnivore_MediumHerbivore_Sort()
         {
             var Animals = new List<Animal>();
-            Animals.Add(new Animal("Pirana", AnimalDiet.Carnivore, AnimalSize.Small));
-            Animals.Add(new Animal("Deer", AnimalDiet.Herbivore, AnimalSize.Medium));
+            Animals.Add(AnimalFactory.CreateSmallCarnivore());
+            Animals.Add(AnimalFactory.CreateMediumHerbivore());
 
             var CircusTrain = new Train();
             CircusTrain.LoadAnimals(Animals);

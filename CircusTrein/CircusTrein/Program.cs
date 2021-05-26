@@ -1,5 +1,6 @@
 ﻿using System;
 using CircusTrein.Business;
+using CircusTrein.Business.Factory;
 using System.Collections.Generic;
 
 namespace CircusTrein.Front
@@ -8,19 +9,7 @@ namespace CircusTrein.Front
     {
         static void Main(string[] args)
         {
-            var Animals = new List<Animal>();
-            Animals.Add(new Animal("Tiger", AnimalDiet.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Tiger", AnimalDiet.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Meerkat", AnimalDiet.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Lion", AnimalDiet.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Hyena", AnimalDiet.Carnivore, AnimalSize.Medium));
-            Animals.Add(new Animal("Hyena", AnimalDiet.Carnivore, AnimalSize.Medium));
-            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
-            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
-            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
+            var Animals = AnimalFactory.CreateRandomAnimals(100);
 
             var CircusTrain = new Train();
             CircusTrain.LoadAnimals(Animals);
@@ -32,7 +21,7 @@ namespace CircusTrein.Front
                 Console.WriteLine($"Cart #{i} contains:");
                 foreach (var animal in Cart.GetAnimals())
                 {
-                    Console.WriteLine("  - " + animal.Name);
+                    Console.WriteLine("  - " + animal.Name + $" Size: {animal.Size} and Diet: {animal.Diet}");
                 }
             }
 

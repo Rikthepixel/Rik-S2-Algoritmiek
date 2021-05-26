@@ -9,5 +9,6 @@ namespace CircusTrein.Business
         Small = 1,
         Medium = 3,
         Big = 5
+
     }
 }
