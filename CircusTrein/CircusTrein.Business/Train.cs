@@ -36,6 +36,7 @@ namespace CircusTrein.Business
         public void LoadAnimals(List<Animal> Animals)
         {
 
+            //Sort list from big to small
             for (int i = 0; i < Animals.Count; i++)
             {
                 for (int j = 0; j < Animals.Count; j++)
