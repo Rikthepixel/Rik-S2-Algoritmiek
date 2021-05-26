@@ -36,6 +36,8 @@ namespace CircusTrein.Business
         public void LoadAnimals(List<Animal> Animals)
         {
             List<Animal> OtherAnimals = new List<Animal>();
+
+            //First add the carnivores
             for (int i = 0; i < Animals.Count; i++)
             {
                 if (Animals[i].Diet == AnimalDiet.Carnivore)
@@ -48,6 +50,7 @@ namespace CircusTrein.Business
                 }
             }
 
+            //Add the Herbivores
             for (int i = 0; i < OtherAnimals.Count; i++)
             {
                 AddAnimal(OtherAnimals[i]);
