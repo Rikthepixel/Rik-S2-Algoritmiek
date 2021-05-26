@@ -9,27 +9,28 @@ namespace CircusTrein.Front
         static void Main(string[] args)
         {
             var Animals = new List<Animal>();
-            Animals.Add(new Animal("Tiger", Foodtype.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Tiger", Foodtype.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Maki", Foodtype.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Maki", Foodtype.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Maki", Foodtype.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Meerkat", Foodtype.Herbivore, AnimalSize.Small));
-            Animals.Add(new Animal("Lion", Foodtype.Carnivore, AnimalSize.Big));
-            Animals.Add(new Animal("Hyena", Foodtype.Carnivore, AnimalSize.Medium));
-            Animals.Add(new Animal("Hyena", Foodtype.Carnivore, AnimalSize.Medium));
-            Animals.Add(new Animal("Elephant", Foodtype.Herbivore, AnimalSize.Big));
-            Animals.Add(new Animal("Elephant", Foodtype.Herbivore, AnimalSize.Big));
-            Animals.Add(new Animal("Elephant", Foodtype.Herbivore, AnimalSize.Big));
+            Animals.Add(new Animal("Tiger", AnimalDiet.Carnivore, AnimalSize.Big));
+            Animals.Add(new Animal("Tiger", AnimalDiet.Carnivore, AnimalSize.Big));
+            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
+            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
+            Animals.Add(new Animal("Maki", AnimalDiet.Herbivore, AnimalSize.Small));
+            Animals.Add(new Animal("Meerkat", AnimalDiet.Herbivore, AnimalSize.Small));
+            Animals.Add(new Animal("Lion", AnimalDiet.Carnivore, AnimalSize.Big));
+            Animals.Add(new Animal("Hyena", AnimalDiet.Carnivore, AnimalSize.Medium));
+            Animals.Add(new Animal("Hyena", AnimalDiet.Carnivore, AnimalSize.Medium));
+            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
+            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
+            Animals.Add(new Animal("Elephant", AnimalDiet.Herbivore, AnimalSize.Big));
 
             var CircusTrain = new Train();
             CircusTrain.LoadAnimals(Animals);
 
-            for (int i = 0; i < CircusTrain.Carts.Count; i++)
+            var TrainCarts = CircusTrain.GetCarts();
+            for (int i = 0; i < TrainCarts.Count; i++)
             {
-                var Cart = CircusTrain.Carts[i];
+                var Cart = TrainCarts[i];
                 Console.WriteLine($"Cart #{i} contains:");
-                foreach (var animal in Cart.Animals)
+                foreach (var animal in Cart.GetAnimals())
                 {
                     Console.WriteLine("  - " + animal.Name);
                 }
