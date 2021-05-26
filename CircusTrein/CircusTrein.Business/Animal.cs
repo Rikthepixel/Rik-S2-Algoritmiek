@@ -7,9 +7,9 @@ namespace CircusTrein.Business
 
     public class Animal
     {
-        public string Name { get; set; }
-        public AnimalDiet Diet { get; set; }
-        public AnimalSize Size { get; set; }
+        public string Name { get; private set; }
+        public AnimalDiet Diet { get; private set; }
+        public AnimalSize Size { get; private set; }
     
         public Animal(string AnimalName, AnimalDiet AnimalFoodType, AnimalSize AnimalSize)
         {
