@@ -35,8 +35,25 @@ namespace CircusTrein.Business
 
         public void LoadAnimals(List<Animal> Animals)
         {
-            List<Animal> OtherAnimals = new List<Animal>();
 
+            for (int i = 0; i < Animals.Count; i++)
+            {
+                for (int j = 0; j < Animals.Count; j++)
+                {
+                    if (j == i)
+                    {
+                        continue;
+                    }
+                    else if ((int)Animals[i].Size > (int)Animals[j].Size)
+                    {
+                        var Temp = Animals[i];
+                        Animals[i] = Animals[j];
+                        Animals[j] = Temp;
+                    }
+                }
+            }
+
+            List<Animal> OtherAnimals = new List<Animal>();
             //First add the carnivores
             for (int i = 0; i < Animals.Count; i++)
             {
