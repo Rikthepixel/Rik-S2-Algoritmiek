@@ -6,8 +6,9 @@ namespace CircusTrein.Business
 {
     public class Train
     {
-        public List<Cart> Carts { private set; get; }
-        public int pointsPerCartLimit;
+        private List<Cart> Carts { set; get; }
+        private int pointsPerCartLimit;
+
         public Train()
         {
             pointsPerCartLimit = 10;
@@ -34,10 +35,22 @@ namespace CircusTrein.Business
 
         public void LoadAnimals(List<Animal> Animals)
         {
+            List<Animal> OtherAnimals = new List<Animal>();
             for (int i = 0; i < Animals.Count; i++)
             {
-                var CurrentAnimal = Animals[i];
-                AddAnimal(CurrentAnimal);
+                if (Animals[i].Diet == AnimalDiet.Carnivore)
+                {
+                    AddAnimal(Animals[i]);
+                }
+                else
+                {
+                    OtherAnimals.Add(Animals[i]);
+                }
+            }
+
+            for (int i = 0; i < OtherAnimals.Count; i++)
+            {
+                AddAnimal(OtherAnimals[i]);
             }
         }
 
@@ -76,27 +89,9 @@ namespace CircusTrein.Business
 
         }
 
-        public List<Animal> GetAllAnimals()
+        public List<Cart> GetCarts()
         {
-            var Animals = new List<Animal>();
-            foreach (var Cart in Carts)
-            {
-                foreach (var animal in Cart.Animals)
-                {
-                    Animals.Add(animal);
-                }
-            }
-            return Animals;
-        }
-
-        public int GetTotalPoints()
-        {
-            var TotalPoints = 0;
-            foreach (var Cart in Carts)
-            {
-                TotalPoints += Cart.GetPoints();
-            }
-            return TotalPoints;
+            return Carts;
         }
     }
 }
