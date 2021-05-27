@@ -68,5 +68,17 @@ namespace CircusTrein.Unit
             var Carts = CircusTrain.GetCarts();
             Assert.IsTrue(Carts.Count == 1);
         }
+
+        [Test]
+        public void Empty_List_Of_Animals()
+        {
+            var Animals = new List<Animal>();
+
+            var CircusTrain = new Train();
+            CircusTrain.LoadAnimals(Animals);
+
+            var Carts = CircusTrain.GetCarts();
+            Assert.IsTrue(Carts.Count == 0);
+        }
     }
 }
