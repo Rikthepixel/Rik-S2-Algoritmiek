@@ -22,5 +22,27 @@ namespace CircusTrein.Business
         {
             return (int)Size;
         }
+
+        public bool CanBePaired(Animal OtherAnimal)
+        {
+            var Points = GetPoints();
+            if (Diet == AnimalDiet.Carnivore)
+            {
+                if (OtherAnimal.Diet == AnimalDiet.Carnivore)
+                {
+                    return false;
+                }
+                else if (OtherAnimal.Diet == AnimalDiet.Herbivore && Points >= OtherAnimal.GetPoints())
+                {
+                    return false;
+                }
+            }
+            else if ((Diet == AnimalDiet.Herbivore) && (OtherAnimal.Diet == AnimalDiet.Carnivore && OtherAnimal.GetPoints() >= Points))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

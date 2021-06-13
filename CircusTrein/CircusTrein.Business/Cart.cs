@@ -30,30 +30,12 @@ namespace CircusTrein.Business
                 return false;
             }
 
-            if (Animal.Diet == AnimalDiet.Carnivore)
+            for (int i = 0; i < Animals.Count; i++)
             {
-                for (int i = 0; i < Animals.Count; i++)
+                var OtherAnimal = Animals[i];
+                if (!Animal.CanBePaired(OtherAnimal))
                 {
-                    var OtherAnimal = Animals[i];
-                    if (OtherAnimal.Diet == AnimalDiet.Carnivore)
-                    {
-                        return false;
-                    }
-                    else if (OtherAnimal.Diet == AnimalDiet.Herbivore && AnimalPoints >= OtherAnimal.GetPoints())
-                    {
-                        return false;
-                    }
-                }
-            }
-            else if (Animal.Diet == AnimalDiet.Herbivore) 
-            {
-                for (int i = 0; i < Animals.Count; i++)
-                {
-                    var OtherAnimal = Animals[i];
-                    if (OtherAnimal.Diet == AnimalDiet.Carnivore && OtherAnimal.GetPoints() >= AnimalPoints)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
