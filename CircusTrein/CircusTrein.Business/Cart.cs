@@ -19,13 +19,14 @@ namespace CircusTrein.Business
             var CartPoints = GetPoints();
             if (CartPoints == 0)
             {
+                Console.WriteLine("Instant add");
                 //No animals in cart
                 return true;
             }
 
-            var AnimalPoints = Animal.GetPoints();
-            if (CartPoints + AnimalPoints > PointLimit)
+            if (CartPoints + Animal.GetPoints() > PointLimit)
             {
+                Console.WriteLine("Over limit");
                 //Over Cart limit
                 return false;
             }
@@ -33,7 +34,7 @@ namespace CircusTrein.Business
             for (int i = 0; i < Animals.Count; i++)
             {
                 var OtherAnimal = Animals[i];
-                if (!Animal.CanBePaired(OtherAnimal))
+                if (!Animal.CanBePaired(OtherAnimal) || !OtherAnimal.CanBePaired(Animal))
                 {
                     return false;
                 }
